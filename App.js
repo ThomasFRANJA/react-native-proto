@@ -4,6 +4,8 @@ import { ThemeProvider, Button, Input, Card, Text, Avatar, Divider } from 'react
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import 'react-native-gesture-handler';
+import './app/src/components/InputText'
+import InputText from './app/src/components/InputText';
 // import './app/src/Styles';
 
 const data = [
@@ -74,21 +76,16 @@ const themeButton = {
 
     // Button styles
     buttonStyle: {
-      borderColor: '#191C23'
+      backgroundColor: '#191C23',
+      width: 250,
+      height: 64
     },
     titleStyle: {
-      color: '#000000',
+      color: '#fff',
       fontSize: 16
     },
   }
 };
-
-const themeInput = {
-  containerStyle: {
-    margin: 40
-  }
-}
-
 
 // This is the /home
 class HomeScreen extends React.Component {
@@ -97,13 +94,13 @@ class HomeScreen extends React.Component {
     return (
       <View style={styles.containerHome}>
         <Image
-            style={{width: 180, height: 82}}
+            style={{width: 59}}
             source={require('./assets/hetic-logo.png')}
           />
         {/* <TextInput placeholder="Nom d'utilisateur"></TextInput>
         <TextInput placeholder="Mot de passe"></TextInput> */}
-        <ThemeProvider theme={themeInput}>
-          <Input 
+        {/* <ThemeProvider theme={themeInput}> */}
+          {/* <Input 
             containerStyle={{ margin: 20, width: 300 }}
             errorMessage={true ? "" : "Nom d'utilisateur non valide"}
             placeholder="Nom d'utilisateur"
@@ -112,8 +109,15 @@ class HomeScreen extends React.Component {
             containerStyle={{ margin: 20, width: 300 }}
             errorMessage={true ? "" : "Mot de passe non valide"}
             placeholder="Mot de passe"
+          /> */}
+          <InputText 
+            placeholder="Nom d'utilisateur"
+            setError="rrr"
           />
-        </ThemeProvider>
+          <InputText 
+            placeholder="Mot de passe"
+          />
+        {/* </ThemeProvider> */}
         <ThemeProvider theme={themeButton}>
           <View>
               <Button
@@ -125,6 +129,8 @@ class HomeScreen extends React.Component {
               />
 
               <Button
+              buttonStyle={{ backgroundColor: 'transparent' }}
+              titleStyle={{ color: '#191C23' }}
               title="Créer un compte"
               type="clear"
               />
@@ -149,7 +155,6 @@ class StudentsListScreen extends React.Component {
               <Avatar rounded size="medium" title="TD" containerStyle={{ margin: 20 }}  />
               <Text h3>Thomas DERUEL</Text>
               <Text h4>25 ans</Text>
-              {/* <Divider style={{ backgroundColor: 'red', marginTop: 10 }}  />  */}
               <ThemeProvider theme={themeButton}>
                 <Button
                   title="Voir cet étudiant"
